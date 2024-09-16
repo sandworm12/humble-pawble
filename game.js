@@ -37,12 +37,15 @@ this.gamewidth = gamewidth;
   this.width = 200;
   this.height = 200;
   this.x = 0;
-  this.y = 0;
+  this.y = this.gameheight - this.height;
+  this.image = document.getelementbyid(player);
 }
     draw(context){
 context.fillstyle = 'white';
       context.fillrect(this.x, this.y, this.width, this.height);
+      context.drawimage(this.image this.x, this.y, this.width, this.height);
   }
+    this.x++;
 
   class background {
 
@@ -60,9 +63,12 @@ context.fillstyle = 'white';
 
   }
 
-  const input = new inputhandler()
-
+  const input = new inputhandler();
+  const player = new player(canvas.width, canvas.height);
+ctx.clearrect(0,0,canvas.width, canvas.height)
   function animate(){
-
+player.update();
+    requestanimationframe(animate);
   }
+animate();
 });
